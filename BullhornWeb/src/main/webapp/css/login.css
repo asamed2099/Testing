@@ -1,0 +1,25 @@
+@charset "UTF-8";
+*{
+	box-sizing:border-box;
+	padding:0px;
+	margin:0px;
+}
+body{
+	height:100VH;
+}
+.form-container{
+	width:30%;
+	margin:auto;
+}
+.form-container form{
+	border:0.5px solid white;
+}
+
+#jbtn{
+	min-height:500px;
+	
+}
+#section {
+	min-height:400px;
+
+}

@@ -1,0 +1,68 @@
+				SQL Queris - User
+
+#Create Table Query
+CREATE TABLE `bhusers` (
+  `bhuser_id` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(70) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `gender` tinytext NOT NULL,
+  `dob` tinytext NOT NULL,
+  `motto` varchar(70) NOT NULL,
+  `joindate` date NOT NULL,
+  PRIMARY KEY (`bhuser_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+#Select All Query
+SELECT `bhusers`.`bhuser_id`,
+    `bhusers`.`fullname`,
+    `bhusers`.`password`,
+    `bhusers`.`email`,
+    `bhusers`.`phone`,
+    `bhusers`.`gender`,
+    `bhusers`.`dob`,
+    `bhusers`.`motto`,
+    `bhusers`.`joindate`
+FROM `bullhorndb`.`bhusers`;
+
+#Insert into Query
+INSERT INTO `bullhorndb`.`bhusers`
+(`bhuser_id`,
+`fullname`,
+`password`,
+`email`,
+`phone`,
+`gender`,
+`dob`,
+`motto`,
+`joindate`)
+VALUES
+(<{bhuser_id: }>,
+<{fullname: }>,
+<{password: }>,
+<{email: }>,
+<{phone: }>,
+<{gender: }>,
+<{dob: }>,
+<{motto: }>,
+<{joindate: }>);
+
+#Update Query
+UPDATE `bullhorndb`.`bhusers`
+SET
+`bhuser_id` = <{bhuser_id: }>,
+`fullname` = <{fullname: }>,
+`password` = <{password: }>,
+`email` = <{email: }>,
+`phone` = <{phone: }>,
+`gender` = <{gender: }>,
+`dob` = <{dob: }>,
+`motto` = <{motto: }>,
+`joindate` = <{joindate: }>
+WHERE `bhuser_id` = <{expr}>;
+
+#Delete Query
+DELETE FROM `bullhorndb`.`bhusers`
+WHERE <{where_expression}>;

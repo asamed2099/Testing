@@ -1,0 +1,105 @@
+@charset "UTF-8";
+*{
+	padding:0px;
+	margin:0px;
+	box-sizing:border-box;
+}
+body{
+	background-color:#ECECEC;
+}
+.newsfeed {
+	display:flex;
+	width:100%;	
+	height:100VH;
+	margin:50px auto;
+}
+.newsfeed .infoside {
+	width:15%;
+	padding:17px;
+	/*border: 0.5px solid lightgrey;*/
+	background-color:white;
+}
+
+.newsfeed .infoside  li {
+	list-style-type:none;
+	padding:3px;
+	border-bottom: 1px solid lightgrey;
+	background-color:white;
+}
+.newsfeed .infoside  li a{
+	text-decoration: none;
+	color:red;
+	background-color:white;
+}
+.newsfeed .newscontainer {
+	width:75%;
+	padding:10px;
+	
+}
+
+.news-updates {
+	
+	background-color:white;
+	padding:10px;
+}
+.nametime {
+	display:flex;
+	justify-content:space-between;
+	margin:7px;
+}
+
+.nametime h6{
+	font-style:italic;
+}
+
+.usernamephoto {
+	display:flex;
+	justify-content:space-between;
+}
+.usernamephoto img {
+	width:60px;
+	height:60px;
+	margin-right:7px;
+}
+.content{ 
+	padding:6px;
+}
+
+ .content p{ 
+	line-height:24px;
+	word-spacing:3px;
+}
+.content .likecommentshare {
+	margin-top:6px;
+}
+.content .likecommentshare span {
+	margin:6px;
+	color:blue;
+	cursor:pointer
+}
+.content .likecommentshare span {
+	margin:6px;
+	color:grey;
+	cursor:none;
+}
+.content .likecommentshare span button {
+	background-color:white;
+	border:none;
+	color:grey;
+	outline:none;
+}
+.content .likecommentshare span button i{
+	margin:4px;
+}
+	/* right side of the newsfeed , trends and updates */
+.newsfeed .inforight {
+	width:15%;
+	padding:10px;
+	/*border: 0.5px solid lightgrey;*/
+	background-color:white;
+	margin-right:7px;
+}
+.newsfeed .inforight h3 {
+	text-align:center;
+	font-size:18px;
+}

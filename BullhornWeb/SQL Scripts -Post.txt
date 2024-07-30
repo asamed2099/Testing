@@ -1,0 +1,47 @@
+					POST Queries 
+
+#Create the table
+CREATE TABLE `bhposts` (
+  `post_id` int NOT NULL AUTO_INCREMENT,
+  `postdate` date NOT NULL,
+  `posttext` text NOT NULL,
+  `bhuserId` int NOT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+#Select All
+SELECT `bhposts`.`post_id`,
+    `bhposts`.`postdate`,
+    `bhposts`.`posttext`,
+    `bhposts`.`bhuserId`
+FROM `bullhorndb`.`bhposts`;
+
+#insert into
+
+INSERT INTO `bullhorndb`.`bhposts`
+(`post_id`,
+`postdate`,
+`posttext`,
+`bhuserId`)
+VALUES
+(<{post_id: }>,
+<{postdate: }>,
+<{posttext: }>,
+<{bhuserId: }>);
+
+#Update 
+
+UPDATE `bullhorndb`.`bhposts`
+SET
+`post_id` = <{post_id: }>,
+`postdate` = <{postdate: }>,
+`posttext` = <{posttext: }>,
+`bhuserId` = <{bhuserId: }>
+WHERE `post_id` = <{expr}>;
+
+#Delete Query
+DELETE FROM `bullhorndb`.`bhposts`
+WHERE <{where_expression}>;
+
+
