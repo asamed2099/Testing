@@ -9,7 +9,7 @@
 				    <a class="nav-link active" href="index.jsp">Home</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="">News Feed</a>
+				    <a class="nav-link" href="AllPostServlet">News Feed</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="about.jsp">About</a>
@@ -21,8 +21,8 @@
 						  </button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 						    <button class="dropdown-item" type="button">Action</button>
-						    <button class="dropdown-item" type="button">Another action</button>
-						    <button class="dropdown-item" type="button">Something else here</button>
+						    <button class="dropdown-item" type="button">Our Projects</button>
+						    <button class="dropdown-item" type="button">Services</button>
 						  </div>
 					</div>
 					
@@ -36,13 +36,13 @@
         			<a class="nav-link " href="Logout" >Logout</a>
       				</li>
        				<li class="nav-item">
-       			  <a class="nav-link "  href="profile.jsp"> <% User usr= (User) session.getAttribute("user"); out.println(usr.getFullname().toUpperCase());  %> </a>
+       			  <a class="nav-link "  href="ProfileServlet"> <% User usr= (User) session.getAttribute("user"); out.println(usr.getFullname().toUpperCase());  %> </a>
       			</li>
       				<% } %>
 				  
 				  <li class="nav-item">
-				   		<form class="form-inline my-2 my-lg-0">
-					      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				   		<form class="form-inline my-2 my-lg-0" action="SearchServlet" method="post">
+					      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtext">
 					      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
    					   </form>
    				</li>

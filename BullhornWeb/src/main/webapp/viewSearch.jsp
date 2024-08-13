@@ -12,11 +12,10 @@ if(session.getAttribute("user")==null){
 <%
 	User user =(User)session.getAttribute("user");
 	
-	//List <Post> posts = request.getAttribute("allposts");
-	//System.out.println(request.getAttribute("allposts"));
+	
 %>
 <jsp:include page="meta.jsp" />
-    <title>BullHorn | News Feed</title>
+    <title>BullHorn | New Feed</title>
      <link rel="stylesheet" href="css/main.css" />
       <link rel="stylesheet" href="css/login.css" />
       <link rel="stylesheet" href="css/newsfeed.css" />
@@ -43,57 +42,11 @@ if(session.getAttribute("user")==null){
     </div>
     
     <div class="newscontainer" id="newscontainer">
-    	<div class="headline"><h3>All News Items</h3></div>
-    	<!--
-    	<div class="news-updates">
-							<div class="nametime">
-								<div class="usernamephoto">
-									<img alt="User Image" src="images/person3.jpg">
-								<h5>Admin Support</h5>
-								
-								</div>
-								
-								<h6>
-									<span>5</span> <span>mins ago</span>
-								</h6>
-							</div>
-							<div class="content">
-								<p>There are many variations of passages of Lorem Ipsum
-									available, but the majority have suffered alteration in some
-									form, by injected humour, or randomised words which don't look
-									even slightly believable. If you are going to use a passage of
-									Lorem Ipsum, you need to be sure there isn't anything
-									embarrassing hidden in the middle of text. All the Lorem Ipsum
-									generators on the Internet tend to repeat predefined chunks as
-									necessary, making this the first true generator on the
-									Internet. It uses a dictionary of over 200 Latin words,
-									combined with a handful of model sentence structures, to
-									generate Lorem Ipsum which looks reasonable. The generated
-									Lorem Ipsum is therefore always free from repetition, injected
-									humour, or non-characteristic words etc</p>
-								<div class="likecommentshare">
-									<span>
-										<button>
-											<i class="fa fa-thumbs-up"></i>Like
-										</button>
-									</span> 
-										
-									<span>
-										<button>
-											<i class="fa fa-comment"></i>Comment
-										</button>
-									</span> 
-										
-									<span><button>
-											<i class="fa fa-share"></i>Share
-										</button>
-									</span>
-								</div>
-							</div>
-						</div>	-->
-						<!-- End of timeline updates  -->
-			<c:forEach var="post" items="${allposts}"  >		
-    					<div class="news-updates">
+    	<div class="headline"><h3>Search Results</h3></div>
+   
+					<% if(session.getAttribute("searchposts") !=null){ %>
+				<c:forEach var="post" items="${searchposts}"  >		
+    						<div class="news-updates">
 							<div class="nametime">
 								<div class="usernamephoto">
 									<img alt="User Image" src="images/person3.jpg">
@@ -149,8 +102,11 @@ if(session.getAttribute("user")==null){
 								</div>
 							</div>
 						</div><!-- End of timeline updates  -->
+						
 				</c:forEach>
-    	
+    				<% }else{ 
+    					String search=request.getParameter("search"); 
+    					out.println("No result for search  " + search  );} %>
 
     		
 

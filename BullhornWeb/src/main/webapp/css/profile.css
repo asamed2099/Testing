@@ -198,3 +198,24 @@
 	margin:10px auto;
 	
 }
+/* Create post css */
+#plinks {
+	
+}
+
+#plinks a{
+	margin:6px;
+}
+#form-wp {
+	
+	border:none;
+	margin-top:-30px;
+}
+
+#form-wp textarea {
+	width:100%;
+	padding: 4px;
+	min-height:50%;
+	text-align:left;
+	
+}

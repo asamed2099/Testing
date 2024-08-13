@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				session.setAttribute("gravaterUrl", gravatarURL);	
-				  nextUrl="/newsfeed.jsp";
+				  nextUrl="/AllPostServlet";
 				  System.out.println("Login successful!!");
 			}else {
 				//request.setAttribute("error", session);

@@ -10,8 +10,9 @@ body{
 .newsfeed {
 	display:flex;
 	width:100%;	
-	height:100VH;
+	min-height:100VH;
 	margin:50px auto;
+	overflow:visible;
 }
 .newsfeed .infoside {
 	width:15%;
@@ -36,11 +37,23 @@ body{
 	padding:10px;
 	
 }
-
+.headline{
+	text-align:center;
+	
+	margin:0px;
+	padding:0px;
+}
+.headline h3{
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
 .news-updates {
 	
 	background-color:white;
 	padding:10px;
+	margin-bottom:5px;
+	
 }
 .nametime {
 	display:flex;

@@ -13,12 +13,12 @@ public class DbUserOperations {
 		// TODO Auto-generated constructor stub
 	}
 	public static User getUser(long UserId) {
-		EntityManager em =DBUtils.getEntityManager("Bullhorn");
+		EntityManager em =DBUtils.getEntityManager("UserUnit");
 		User user =em.find(User.class, UserId);
 		return user;
 	}
 	public static void insert(User user) {
-		EntityManager em =DBUtils.getEntityManager("Bullhorn");
+		EntityManager em =DBUtils.getEntityManager("UserUnit");
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
@@ -74,7 +74,7 @@ public class DbUserOperations {
 	* @param bhUser
 	*/
 	public static void update(User user) {
-		EntityManager entityManager = DBUtils.getEntityManager("Bullhorn");
+		EntityManager entityManager = DBUtils.getEntityManager("UserUnit");
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();
@@ -104,7 +104,7 @@ public class DbUserOperations {
 	* @param bhUser that you never want to see again
 	*/
 	public static void delete(User user) {
-		EntityManager entityManager = DBUtils.getEntityManager("Bullhorn"); 
+		EntityManager entityManager = DBUtils.getEntityManager("UserUnit"); 
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();
@@ -131,7 +131,7 @@ public class DbUserOperations {
 	* @return Bhuser with that unique email address
 	*/
 	public static User getUserByEmail (String email) {
-		EntityManager entityManager = DBUtils.getEntityManager("Bullhorn");
+		EntityManager entityManager = DBUtils.getEntityManager("UserUnit");
 		String query = "SELECT u from User u where u.email=:email";
 		TypedQuery<User> quser =entityManager.createQuery(query, User.class);
 		quser.setParameter("email", email);
@@ -164,7 +164,7 @@ public class DbUserOperations {
 	doesn't
 	*/
 	public static boolean isUserValid(String userEmail, String password) {
-		EntityManager entityManager = DBUtils.getEntityManager("Bullhorn");
+		EntityManager entityManager = DBUtils.getEntityManager("UserUnit");
 		
 		String qString = "Select count(b.bhuser_id) from User b "+
 				"where b.email=:email and b.password=:password";
@@ -190,7 +190,23 @@ public class DbUserOperations {
 		return result;
 	
 	}
-	
+	public static User getUserById (int id) {
+		EntityManager entityManager = DBUtils.getEntityManager("UserUnit");
+		String query = "SELECT u from User u where u.bhuser_id=:bhuser_id";
+		TypedQuery<User> quser =entityManager.createQuery(query, User.class);
+		quser.setParameter("bhuser_id", id);
+		User user =null;
+		try {
+			
+			user = quser.getSingleResult();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			entityManager.close();
+		}
+		return user;
+	}
 	
 	
 	

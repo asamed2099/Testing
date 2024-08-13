@@ -4,6 +4,8 @@ package studs;
 
 import java.util.Date;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
 @Table(name="bhusers")
+@DynamicUpdate(value = true)
 public class User {
 		private int bhuser_id;
 		@Id
@@ -92,6 +95,14 @@ public class User {
 			this.joindate = joindate;
 		}
 		private String fullname;
+		public User(String fullname, String email, String phone, String dob, String motto) {
+			super();
+			this.fullname = fullname;
+			this.email = email;
+			this.phone = phone;
+			this.dob = dob;
+			this.motto = motto;
+		}
 		private String password;
 		private String email; 
 		private String phone ;

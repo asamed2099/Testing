@@ -39,9 +39,9 @@
 		<div class="settings">
 			<ul class="list-group">
 			  <li class="list-group-item">
-				 <a href="profilesettings.jsp">Profile Settings</a> 
+				 <a href="profilesettings.jsp">Update Profile</a> 
 			  </li>
-			  <li class="list-group-item"><a href="profilesettings.jsp">Change Password</a> </li>
+			  <li class="list-group-item"><a href="changepassword.jsp">Change Password</a> </li>
 			  <li class="list-group-item">also link</li>
 			  
 			</ul>
@@ -57,7 +57,7 @@
 		<input type="hidden" id="err" name="errors" value="${status}">
 	</div>
 	<div class="card card-body" id="settingsform" style="">
-		<form action="profile" method="POST" id="fm" class="px-4 py-3">
+		<form action="EditProfileServlet" method="POST" id="fm" class="px-4 py-3" enctype = "multipart/form-data">
 			<img src="images/regt.png" alt="">
 			
 		
@@ -96,23 +96,23 @@
 			</div>
 		<div class="form-group">
 				<label for="phone">Address:</label> 
-				<input type="text" class="form-control" id="phone" name="phone"  />
+				<input type="text" class="form-control" id="address" name="address"  required/>
 
 			</div>
 
 			<div class="form-group">
 				<label for="phone">City:</label> 
-				<input type="text" class="form-control" id="city" name="city"  />
+				<input type="text" class="form-control" id="city" name="city"  required />
 
 			</div>
 			<div class="form-group">
 				<label for="phone">Country:</label> 
-				<input type="text" class="form-control" id="country" name="country"  />
+				<input type="text" class="form-control" id="country" name="country" required />
 
 			</div>
 			<div class="form-group">
 				<label for="dob">Bio:</label> 
-				<textarea class="form-control" id="motto" name="motto" required >
+				<textarea class="form-control" id="bio" name="bio" required >
 				
 				</textarea>
 			</div>

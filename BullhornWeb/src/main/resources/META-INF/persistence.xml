@@ -8,7 +8,7 @@
 
 
 
-<persistence-unit name="Bullhorn">
+<persistence-unit name="UserUnit">
 
 <properties>
 	<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3310/bullhorndb"/>
@@ -26,6 +26,17 @@
 	<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 	<property name="jakarta.persistence.jdbc.password" value="Samadi123"/>
 	<property name="hibernate.show_sql" value="true"/>
+</properties>
+</persistence-unit>
+<persistence-unit name="UserInfoUnit">
+
+<properties>
+	<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3310/bullhorndb"/>
+	<property name="jakarta.persistence.jdbc.user" value="root"/>
+	<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+	<property name="jakarta.persistence.jdbc.password" value="Samadi123"/>
+	<property name="hibernate.show_sql" value="true"/>
+	<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
 </properties>
 </persistence-unit>
 </persistence>

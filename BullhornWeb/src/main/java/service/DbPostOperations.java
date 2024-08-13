@@ -87,7 +87,7 @@ public class DbPostOperations {
 	}
 	public static List<Post>posts (){
 		EntityManager entityManager = DBUtils.getEntityManager("PostUnit");
-		String qString ="select b from Post b";
+		String qString ="select b from Post b ORDER BY b.postdate desc";
 		List<Post>posts =null;
 		
 		try {
@@ -107,11 +107,11 @@ public class DbPostOperations {
 		EntityManager entityManager = DBUtils.getEntityManager("PostUnit");
 		List<Post> userposts = null;
 		
-		String qString = "select p from Post p where p.user.bhuserId=:userId";
+		String qString = "select p from Post p where p.user.bhuser_id=:userId";
 		
 		try {
 			TypedQuery<Post> query =entityManager.createQuery(qString, Post.class);
-			query.setParameter("bhuser_id", userId);
+			query.setParameter("userId", userId);
 			userposts = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,5 +159,28 @@ public class DbPostOperations {
 			entityManager.close();
 		}
 		return searchposts; 
+	}
+	public static User poster(int userId) {
+		/*
+		EntityManager entityManager = DBUtils.getEntityManager("PostUnit");
+		List<Post> userposts = null;
+		
+		String qString = "select p from Post p where p.bhuserId=:userId";
+		
+		try {
+			TypedQuery<Post> query =entityManager.createQuery(qString, Post.class);
+			query.setParameter("bhuser_id", userId);
+			userposts = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			entityManager.close();
+		}
+		
+		
+		return  userposts.get(userId);
+		*/	
+		return null;
+		
 	}
 }

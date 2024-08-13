@@ -12,20 +12,23 @@ import studs.Post;
 import java.io.IOException;
 import java.util.List;
 
-public class AllPostServlet extends HttpServlet {
+
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public AllPostServlet() {
+       
+    
+    public SearchServlet() {
         super();
-      
+       
     }
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		long filterByUserId = 0;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String searchText = "";
 		
-		String nextURL = "/loginError.jsp";
+		String nextURL = "";
 		//get user out of session.
 		//If they don't exist then send them back to the login page.
 		//kill the session while you're at it.
@@ -37,25 +40,27 @@ public class AllPostServlet extends HttpServlet {
 		return;//return prevents an error
 		}
 		
-		// get all posts
+		//get posts based on parameters; if no parameters then get all posts
 		List<Post> posts = null;
-		
-			posts = DbPostOperations.posts();
-		
+		if(request.getParameter("searchtext")!=null && !request.getParameter("searchtext").isEmpty()) {
+			searchText = request.getParameter("searchtext").toString();
+			posts= DbPostOperations.searchPosts(searchText);
+		}else {
+			//posts = DbPostOperations.posts();
+		}
 	
 		//add posts to request
-		//request.setAttribute("allposts", posts);
-		session.setAttribute("allposts", posts);
-		
-		nextURL = "/newsfeed.jsp";
+		request.setAttribute("search", searchText);
+		session.setAttribute("searchposts", posts);
+		//display posts in newsfeed.jsp
+		nextURL = "/viewSearch.jsp";
 		//redirect to next page as indicated by the value of the nextURL variable
 		getServletContext().getRequestDispatcher(nextURL).forward(request,response);
 	}
 
-	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doPost(request, response);
+		doGet(request, response);
 	}
 
 }

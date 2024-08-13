@@ -1,33 +1,56 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="service.DbPostOperations"%>
+<%@page import="studs.Post"%>
+<%@page import="java.util.List"%>
+<%@page import="service.UserInfoOperations"%>
+<%@page import="studs.UserInfo"%>
 <%@page import="studs.User"%>
 <%@page import="service.DbUserOperations"%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
 		User user =null;
+		UserInfo userInfo =null;
 		String email = "";
 		int size = 100;
+		List<Post> userposts = (List)request.getAttribute("userposts");
 	if(session.getAttribute("user") != null){
 	user = (User)session.getAttribute("user"); 
+	userInfo =(UserInfo)UserInfoOperations.getUserInfoById(user.getBhuser_id());
 		 email = user.getEmail(); 
+		 
+		//Find post of user
+		//userposts =DbPostOperations.listPostOfUser(user.getBhuser_id());
+		//pageContext.setAttribute("userposts", userposts);
+		System.out.println("User post :" + request.getAttribute("userposts") );
 	}else {
 		response.sendRedirect("login.jsp");
 		}
 %>
+
 <jsp:include page="meta.jsp" />
-<title>Profile| Abdul Samad</title>
+<title>Profile | <%=user.getFullname() %></title>
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" type="text/css" href="css/profile.css" />
 <jsp:include page="header.jsp" />
 <div class="contain">
 	<div class="leftside">
 		<div class="photo">
+			
 			<img alt="Profile photo"
-				src="<%=DbUserOperations.getGravatarUrl(email, size)%>">
+			<% if(userInfo !=null){
+				String photo =userInfo.getPhoto() ; 
+			     
+			         %>
+				src="uploads/<%=photo %> "
+				<%} %>
+				>
+				
 		</div>
 
 		<div class="bio">
 
 			<p>
-			<h1>Profession</h1>
+			<h1><% if(userInfo != null){out.println( userInfo.getJobtitle()); }else{out.println("Not Specified");} %></h1>
 			</p>
 			<p>
 			<h4>Company Name</h4>
@@ -44,7 +67,7 @@
 			<ul class="list-group">
 				<li class="list-group-item"><a href="profilesettings.jsp">Profile
 						Settings</a></li>
-				<li class="list-group-item"><a href="profilesettings.jsp">Change
+				<li class="list-group-item"><a href="changepassword.jsp">Change
 						Password</a></li>
 				<li class="list-group-item">also link</li>
 
@@ -60,7 +83,7 @@
 			<div>
 				<h2><%=user.getFullname()%></h2>
 				<h5>
-					<i class="fa fa-map-marker"></i> Riyadh, Country
+					<i class="fa fa-map-marker"></i> <span><% if(userInfo != null){out.println( userInfo.getCity()); }else{out.println("Not Specified");} %></span>,<span><% if(userInfo != null){out.println( userInfo.getCountry()); } else{out.println("Not Specified");}%></span>
 				</h5>
 			</div>
 
@@ -97,52 +120,93 @@
 		</div>
 		<div class="middle">
 			<div class=""></div>
-			<p>
+			<p id="plinks">
 				<a class="" data-toggle="collapse" href="#timeline" role="button"
 					aria-expanded="false" aria-controls="collapseExample"> Timeline
 				</a> <a class="" data-toggle="collapse" href="#about" role="button"
 					aria-expanded="false" aria-controls="collapseExample"> About </a>
+				</a> <a class="" data-toggle="collapse" href="#createpost" role="button"
+					aria-expanded="false" aria-controls="collapseExample"> Create Post </a>
 			</p>
 			<hr />
 			<div class="collapse" id="timeline">
 				<div class="timeline-container">
 
 					<div class="update-container">
-						<div class="timeline-updates">
+						<!-- 
+						 -->
+						<!-- End of timeline updates  -->
+						<%if(request.getAttribute("userposts") !=null){ %>
+						<c:forEach var="post" items="${userposts}"  >
+								
+    					<div class="news-updates">
 							<div class="nametime">
-								<h5>Admin Support</h5>
+								<div class="usernamephoto">
+							<img alt="Profile photo"
+							<% if(userInfo !=null){
+			                String photo =userInfo.getPhoto() ; 
+			   				%>
+							src="uploads/<%=photo %> "
+							<%} %>
+							>
+								
+								
+								
+								<h5>
+								<c:set var="id" value="${post.user.getBhuser_id()}"/>
+								<% 
+									
+								if(pageContext.getAttribute("id") !=null){
+									
+								int id=(Integer)pageContext.getAttribute("id");
+								System.out.println("The id value is "+ id);
+								String postername =DbUserOperations.getUserById(id).getFullname(); 
+								out.println(postername); 
+								
+								}
+								
+								%>
+								
+								</h5>
+								
+								</div>
+								
 								<h6>
 									<span>5</span> <span>mins ago</span>
 								</h6>
 							</div>
 							<div class="content">
-								<p>There are many variations of passages of Lorem Ipsum
-									available, but the majority have suffered alteration in some
-									form, by injected humour, or randomised words which don't look
-									even slightly believable. If you are going to use a passage of
-									Lorem Ipsum, you need to be sure there isn't anything
-									embarrassing hidden in the middle of text. All the Lorem Ipsum
-									generators on the Internet tend to repeat predefined chunks as
-									necessary, making this the first true generator on the
-									Internet. It uses a dictionary of over 200 Latin words,
-									combined with a handful of model sentence structures, to
-									generate Lorem Ipsum which looks reasonable. The generated
-									Lorem Ipsum is therefore always free from repetition, injected
-									humour, or non-characteristic words etc</p>
+								<p>
+								<!--  -->
+								 	
+								 
+									 
+									 <p><c:out value="${post.posttext}"/></p>
+									 <p><c:out value="${post.postdate}"/></p>
+								
+								</p>
 								<div class="likecommentshare">
-									<span><button>
+									<span>
+										<button>
 											<i class="fa fa-thumbs-up"></i>Like
-										</button></span> <span><button>
+										</button>
+									</span> 
+										
+									<span>
+										<button>
 											<i class="fa fa-comment"></i>Comment
-										</button></span> <span><button>
+										</button>
+									</span> 
+										
+									<span><button>
 											<i class="fa fa-share"></i>Share
-										</button></span>
+										</button>
+									</span>
 								</div>
 							</div>
-						</div>
-						<!-- End of timeline updates  -->
-
-
+						</div><!-- End of timeline updates  -->
+				</c:forEach>
+    				<% }else {out.println("User has no posts");} %>
 
 					</div>
 					<!-- End of updates container  -->
@@ -175,7 +239,7 @@
 								</tr>
 								<tr>
 									<td>Address</td>
-									<td>453 Base 4 Street , Riyadh, KSA</td>
+									<td><% if(userInfo != null){out.println( userInfo.getAddress()); }else{out.println("Not Specified");} %></td>
 								</tr>
 								<tr>
 									<td>Email</td>
@@ -207,11 +271,36 @@
 				</div>
 			</div>
 			<!-- End of #about platform  -->
+			<div class="collapse" id="createpost">
+				<div>
+					<div class="card card-body" id="form-wp">
+		<form action="AddPostServlet" method="POST" id="fm" class="px-4 py-3">
+			<div class="form-group">
+				<input type="hidden" class="form-control" id="poster" name="poster" value="<%=user.getBhuser_id() %>" />
+			</div>
+			<div class="form-group">
+				<label for="dob">Create Post:</label> 
+				<textarea class="form-control" rows="6" id="post" name="post" required ></textarea>
+			</div>
+			<div class="form-group " id="smt">
+				<button type="submit" class="btn btn-primary">Post </button>
+			</div>
+	</div>
+	</form>
+</div>
+				</div>
+			</div>
+			<!-- End of #Create a Post platform  -->
+			
 		</div>
 		<!--  <div class="bottom"></div>-->
 	</div>
 
 </div>
 
-
+<script>
+		document.getElementById("fm").addEventListener("submit", function (e){
+			e.printDefault();
+		})
+</script>
 <jsp:include page="footer.jsp" />

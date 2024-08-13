@@ -1,0 +1,110 @@
+@charset "UTF-8";
+*{
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	
+}
+body{
+	background-color:white;
+	
+}
+.about{
+	min-height:700px;
+	padding:10px;
+}
+#jumbo{
+	margin-bottom:40px;
+	
+}
+.jumbo-container{
+	display:flex;
+	justify-content:space-between;
+	width:80%;
+	margin:20px auto;
+	height:320px;
+}
+.about-us{
+	width:63%;
+	padding:10px;
+}
+.about-us h2{
+	text-align:center;
+	font-size:35px;
+}
+.about-us p{
+	line-height:35px;
+	word-spacing:4px;
+	text-wrap:wrap;
+	padding:10px;
+}
+.img-container {
+	width:37%;
+	margin:7px;
+}
+.img-container img{
+	width:100%;
+}
+.about-welcome{
+	width:40%;
+	margin: 40px auto;
+	margin-top:80px;
+	height:100px;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	background-color:teal;
+	color:#f5f8f5;
+	padding:10px;
+	
+}
+.about-welcome img{
+	width:50px;
+	height:50px;
+	margin:10px;
+}
+.about-stats{
+	display:flex;
+	width:65%;
+	margin:60px auto;
+	
+	justify-content:space-around;
+}
+.about-stats li{
+	list-style-type:none;
+	text-align:center;
+}
+.about-staff{
+	width:80%;
+	margin:80px auto;
+	display:flex;
+	justify-content:space-between;
+}
+.staff-img {
+	width:45%;
+	
+	padding:10px;
+}
+.staff-img img{
+	width:100%;
+	
+}
+.staff-text {
+	width:45%;
+	padding:10px;
+}
+.staff-text h3 {
+	text-align:center;
+}
+.staff-text p{
+	line-height:27px;
+	word-spacing:4px;
+	
+}
+.staff-text p button{
+	padding:6px;
+	border:1px solid teal;
+	outline:none;
+	cursor:pointer;
+	
+}

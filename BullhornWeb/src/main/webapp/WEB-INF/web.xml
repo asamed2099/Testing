@@ -40,7 +40,7 @@
     <servlet-name>UserPosts</servlet-name>
     <url-pattern>/UserPosts</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>AllPostServlet</display-name>
     <servlet-name>AllPostServlet</servlet-name>
@@ -78,7 +78,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ProfileServlet</servlet-name>
-    <url-pattern>/profile</url-pattern>
+    <url-pattern>/ProfileServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -89,5 +89,45 @@
   <servlet-mapping>
     <servlet-name>AddUserServlet</servlet-name>
     <url-pattern>/AddUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProfileServlet</display-name>
+    <servlet-name>EditProfileServlet</servlet-name>
+    <servlet-class>EditProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProfileServlet</servlet-name>
+    <url-pattern>/EditProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddPostServlet</display-name>
+    <servlet-name>AddPostServlet</servlet-name>
+    <servlet-class>AddPostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPostServlet</servlet-name>
+    <url-pattern>/AddPostServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchServlet</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/SearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangePassword</display-name>
+    <servlet-name>ChangePassword</servlet-name>
+    <servlet-class>ChangePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePassword</servlet-name>
+    <url-pattern>/ChangePassword</url-pattern>
   </servlet-mapping>
 </web-app>

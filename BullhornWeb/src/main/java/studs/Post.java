@@ -1,6 +1,8 @@
 package studs;
 import java.util.Date;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,11 +15,12 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 @Entity
 @Table(name="bhposts")
+@DynamicUpdate(value = true)
 public class Post {
 	private int post_id;
 	private Date postdate;
 	private String posttext ;
-	//private int bhuserId;
+	private int bhuserId;
 	private User user;
 
 
@@ -52,8 +55,8 @@ public class Post {
 	public void setPosttext(String posttext) {
 		this.posttext = posttext;
 	}
-	/*
-	@Column(name="bhuserId")
+	
+	/*@Column(name="bhuserId")
 	public int getBhuserId() {
 		return bhuserId;
 	}
